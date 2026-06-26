@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Sensor Test</title>
+  </head>
+  <body>
+    <h1>Sensor Test</h1>
+
+    <button id="start">Start</button>
+
+    <pre id="output">Waiting...</pre>
+
+    <script>
+      const output = document.getElementById("output");
+
+      document.getElementById("start").onclick = async () => {
+        if (
+          typeof DeviceOrientationEvent !== "undefined" &&
+          typeof DeviceOrientationEvent.requestPermission === "function"
+        ) {
+          const result = await DeviceOrientationEvent.requestPermission();
+
+          if (result !== "granted") {
+            output.textContent = "Permission denied";
+            return;
+          }
+        }
+
+        window.addEventListener("deviceorientation", (e) => {
+          output.textContent = `Alpha: ${e.alpha}
+Beta: ${e.beta}
+Gamma: ${e.gamma}`;
+        });
+
+        window.addEventListener("devicemotion", (e) => {
+          console.log(e);
+        });
+      };
+    </script>
+  </body>
+</html>
