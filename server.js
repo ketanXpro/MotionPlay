@@ -17,6 +17,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("motion", (data) => {
+    console.log("SERVER RECEIVED:", data);
     io.emit("motion", data);
   });
 
