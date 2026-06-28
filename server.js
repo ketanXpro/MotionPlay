@@ -10,7 +10,11 @@ app.use(express.static("public"));
 app.use("/controller", express.static("controller"));
 
 io.on("connection", (socket) => {
-  console.log("A device connected:", socket.id);
+  console.log("CONNECTED:", socket.id);
+
+  socket.onAny((event, ...args) => {
+    console.log("EVENT:", event, args);
+  });
 
   socket.on("controller-connected", () => {
     io.emit("controller-connected");
@@ -23,6 +27,10 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", () => {
     io.emit("controller-disconnected");
+  });
+
+  socket.on("slash", (data) => {
+    io.emit("slash", data);
   });
 });
 

@@ -1,0 +1,63 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: #222;
+  color: white;
+}
+
+#gameArea {
+  width: 800px;
+  height: 500px;
+
+  margin: 30px auto;
+
+  background: #333;
+
+  border: 3px solid white;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+#cursor {
+  position: absolute;
+
+  width: 140px;
+  height: 10px;
+
+  background: linear-gradient(to right, #ddd, #fff, #ddd);
+
+  border-radius: 20px;
+
+  left: 330px;
+  top: 230px;
+
+  transform-origin: 0px center;
+}
+#apple {
+  position: absolute;
+
+  left: 250px;
+  top: 150px;
+
+  font-size: 40px;
+  user-select: none;
+}
+
+#slash {
+  position: absolute;
+
+  width: 180px;
+  height: 8px;
+
+  background: white;
+
+  border-radius: 10px;
+
+  opacity: 0;
+
+  transform-origin: left center;
+
+  transition: opacity 0.1s;
+}
